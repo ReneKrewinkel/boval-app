@@ -11,7 +11,7 @@ const Pagination = () => {
 
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
-  const num = 10
+  const num = 50
 
   useEffect( () => {
     const d = []

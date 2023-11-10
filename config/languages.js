@@ -11,8 +11,13 @@ const languages = {
     title: 'English',
     prompt: "Title",
     name: "Name"
-  }
+  },
 
+  de: {
+    title: 'Deutsch',
+    prompt: "Title",
+    name: "Name"
+  }
 }
 
 export default languages

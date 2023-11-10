@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import {
   View,
   Text,
@@ -6,6 +6,9 @@ import {
   Button,
   StyleSheet, SafeAreaView
 } from 'react-native'
+
+import AppContext from '../context/AppContext'
+
 import { useLocales } from 'expo-localization'
 
 import languages from '../config/languages'
@@ -15,6 +18,8 @@ const Translate = () => {
   const [language, setLanguage] = useState(null)
   const [title, setTitle] = useState('Language')
 
+  const ctx = useContext(AppContext)
+
   useEffect( () => {
     const l = locale?.languageTag.split('-')[0]
     setLanguage(languages[l])
@@ -22,15 +27,16 @@ const Translate = () => {
   },[])
 
   const switchLanguage = (lng) => {
-    setLanguage(languages[lng])
-    setTitle(languages[lng].title)
+    ctx.setLanguage('Hello!!')
+    // setLanguage(languages[lng])
+    // setTitle(languages[lng].title)
   }
 
   return(
     <View style={styles.container}>
       <View style={styles.card}>
         <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{ title }</Text>
-        <Text>{ language && `${language.prompt } - ${ language.name }` }</Text>
+        <Text>{ language && `${ language.prompt } - ${ language.name }` }</Text>
       </View>
       <View style={styles.button}>
         {

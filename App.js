@@ -7,9 +7,16 @@ import SQLData from './components/SQLData'
 import Pagination from './components/Pagination'
 import Translate from './components/Translate'
 
+import AppContext from './context/AppContext'
+
 export default function App() {
 
+  const [data, setData] = useState(null)
   const [mod, setMod] = useState('translate')
+
+  const setLanguage = (lng) => {
+    alert(lng)
+  }
 
   const renderContent = () => {
     if(mod === 'translate') return(<Translate />)
@@ -20,6 +27,7 @@ export default function App() {
   }
 
   return (
+    <AppContext.Provider value={{ data, setLanguage }}>
     <View style={styles.container}>
       { renderContent()}
       <View style={styles.button}>
@@ -30,6 +38,7 @@ export default function App() {
         <Button title={'Pagination'} onPress={ () => setMod('pagination') }/>
       </View>
     </View>
+    </AppContext.Provider>
   );
 }
 
